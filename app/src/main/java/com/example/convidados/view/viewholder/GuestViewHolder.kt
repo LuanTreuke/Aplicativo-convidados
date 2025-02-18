@@ -9,10 +9,12 @@ import com.example.convidados.view.listener.OnGuestListener
 class GuestViewHolder(private val bind: RowGuestBinding, private val listener: OnGuestListener) : RecyclerView.ViewHolder(bind.root) {
 
     fun bind(guest: GuestModel){
-        //utilizando viewBinding
+
         bind.textName.text = guest.name
 
-        bind.textName.setOnClickListener{
+        bind.textLevarei.text = if (guest.levarei.isNotEmpty()) "Levará: ${guest.levarei}" else " - "
+
+        bind.textName.setOnClickListener {
             listener.onClick(guest.id)
         }
 
@@ -20,8 +22,7 @@ class GuestViewHolder(private val bind: RowGuestBinding, private val listener: O
             AlertDialog.Builder(itemView.context)
                 .setTitle("Remoção de convidado")
                 .setMessage("Deseja remover?")
-                .setPositiveButton("Sim"
-                ) { dialog, which ->
+                .setPositiveButton("Sim") { dialog, which ->
                     listener.onDelete(guest.id)
                 }
                 .setNegativeButton("Não", null)
@@ -29,5 +30,25 @@ class GuestViewHolder(private val bind: RowGuestBinding, private val listener: O
                 .show()
             true
         }
+
+        bind.textLevarei.setOnClickListener {
+            listener.onClick(guest.id)
+        }
+
+        bind.textLevarei.setOnLongClickListener {
+            AlertDialog.Builder(itemView.context)
+                .setTitle("Remoção de convidado")
+                .setMessage("Deseja remover?")
+                .setPositiveButton("Sim") { dialog, which ->
+                    listener.onDelete(guest.id)
+                }
+                .setNegativeButton("Não", null)
+                .create()
+                .show()
+            true
+        }
+
+
     }
+
 }

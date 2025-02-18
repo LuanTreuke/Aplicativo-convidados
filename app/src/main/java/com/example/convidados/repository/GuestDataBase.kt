@@ -10,7 +10,7 @@ class GuestDataBase(context: Context) : SQLiteOpenHelper(context, NAME, null, VE
 
     companion object{
         private const val NAME = "questdb"
-        private const val VERSION = 1
+        private const val VERSION = 2
     }
 
     override fun onCreate(db: SQLiteDatabase) {
@@ -20,11 +20,12 @@ class GuestDataBase(context: Context) : SQLiteOpenHelper(context, NAME, null, VE
             DataBaseConstants.GUEST.COLUMNS.ID + " integer primary key autoincrement, " +
             DataBaseConstants.GUEST.COLUMNS.NAME + " text, " +
             DataBaseConstants.GUEST.COLUMNS.PRESENCE + " integer, " +
-            DataBaseConstants.GUEST.COLUMNS.LEVAREI + " text " )
+            DataBaseConstants.GUEST.COLUMNS.LEVAREI + " text )" )
     }
 
-    override fun onUpgrade(db: SQLiteDatabase?, oldVERSION: Int, newVERSION: Int) {
+    override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
 
     }
+
 
 }

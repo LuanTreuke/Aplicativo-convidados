@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Context
 import android.provider.ContactsContract.Data
+import android.util.Log
 import com.example.convidados.constants.DataBaseConstants
 import com.example.convidados.model.GuestModel
 
@@ -229,6 +230,25 @@ class GuestRepository private constructor(context: Context){
             return list
         }
         return list
+
     }
+
+    @SuppressLint("Range")
+    fun checkDatabase() {
+        val db = guestDataBase.readableDatabase
+        val cursor = db.rawQuery("SELECT * FROM ${DataBaseConstants.GUEST.TABLE_NAME}", null)
+
+        if (cursor.count == 0) {
+            Log.e("DB_TEST", "Nenhum convidado encontrado no banco de dados!")
+        } else {
+            while (cursor.moveToNext()) {
+                val nome = cursor.getString(cursor.getColumnIndex(DataBaseConstants.GUEST.COLUMNS.NAME))
+                Log.e("DB_TEST", "Convidado encontrado: $nome")
+            }
+        }
+        cursor.close()
+    }
+
+
 
 }

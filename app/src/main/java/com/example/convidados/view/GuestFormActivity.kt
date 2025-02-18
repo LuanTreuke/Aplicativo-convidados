@@ -40,6 +40,17 @@ class GuestFormActivity : AppCompatActivity(), View.OnClickListener {
         binding.radioPresent.isChecked = true
         binding.buttonEnviar.setOnClickListener(this)
 
+        binding.radioAbsent.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                binding.editTextLevarei.visibility = View.GONE
+                binding.textLevarei.visibility = View.GONE
+                binding.editTextLevarei.text.clear()
+            } else {
+                binding.editTextLevarei.visibility = View.VISIBLE
+                binding.textLevarei.visibility = View.VISIBLE
+            }
+        }
+
         observe()
         loadData()
     }
@@ -49,6 +60,10 @@ class GuestFormActivity : AppCompatActivity(), View.OnClickListener {
             val name = binding.editTextName.text.toString()
             val presence = binding.radioPresent.isChecked
             val levarei = binding.editTextLevarei.text.toString()
+            if (name.isBlank()) {
+                binding.editTextName.error = "Por favor, insira um nome"
+                return
+            }
 
             val model = GuestModel(guestId, name, presence, levarei)
             viewModel.save(model)

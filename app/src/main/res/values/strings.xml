@@ -19,4 +19,6 @@
     <string name="estarei_presente">Presente</string>
     <string name="estarei_ausente">Ausente</string>
     <string name="enviar">Enviar</string>
+    <string name="levarei">Levarei:</string>
+    <string name="comida_bebida">Comida, bebida...</string>
 </resources>
