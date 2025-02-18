@@ -10,6 +10,7 @@ class DataBaseConstants {
             const val ID = "id"
             const val NAME = "name"
             const val PRESENCE = "presence"
+            const val LEVAREI = "levarei"
         }
     }
 
