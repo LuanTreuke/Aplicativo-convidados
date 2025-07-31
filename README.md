@@ -3,6 +3,7 @@
 ## Autor
 Luan Eduardo Treuke
 
+
 Este projeto é um aplicativo Android desenvolvido para gerenciar listas de convidados em eventos. Ele permite adicionar, editar, remover e visualizar convidados, facilitando o controle de presença em festas, reuniões ou outros tipos de eventos.
 
 ## Linguagens e Tecnologias Utilizadas
